@@ -1,16 +1,416 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mypj</title>
+    <title>NOVA | Creative Digital Studio</title>
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #090b14;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            border-bottom: 1px solid #242638;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #a78bfa;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #c5c7d8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #a78bfa;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 82vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            background:
+                radial-gradient(
+                    ellipse at top,
+                    #29204c 0%,
+                    #090b14 65%
+                );
+        }
+
+        .tag {
+            border: 1px solid #514477;
+            color: #c4b5fd;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 82px);
+            line-height: 1.1;
+            max-width: 850px;
+            margin-bottom: 25px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(
+                90deg,
+                #a78bfa,
+                #f0abfc,
+                #93c5fd
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: #a6a9bd;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 13px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background: #a78bfa;
+            color: #111020;
+            border: 1px solid #a78bfa;
+        }
+
+        .btn-primary:hover {
+            background: #c4b5fd;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            border: 1px solid #45475c;
+            color: #ffffff;
+        }
+
+        .btn-secondary:hover {
+            border-color: #a78bfa;
+            transform: translateY(-3px);
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 8%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #a6a9bd;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: #111421;
+            border: 1px solid #292c40;
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: #8b5cf6;
+            background: #15182a;
+        }
+
+        .icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: #292044;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #a6a9bd;
+            font-size: 15px;
+        }
+
+        /* About section */
+        .about {
+            padding: 70px 8%;
+            text-align: center;
+            background: #0e101c;
+            border-top: 1px solid #242638;
+            border-bottom: 1px solid #242638;
+        }
+
+        .about h2 {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            max-width: 650px;
+            margin: auto;
+            color: #a6a9bd;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .contact h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            color: #a6a9bd;
+            margin-bottom: 25px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #777b91;
+            border-top: 1px solid #242638;
+            font-size: 14px;
+        }
+
+        /* Mobile responsive design */
+        @media (max-width: 750px) {
+            nav {
+                padding: 20px 5%;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 17px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                padding: 60px 6%;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            .section-heading h2,
+            .about h2,
+            .contact h2 {
+                font-size: 29px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Asaver ka pehla project </h1>
-    <P>  Lorem ipsum dolor sit amet consectetur
-         adipisicing elit. Corporis culpa autem labore saepe a 
-         earum velit alias harum, sequi molestiae repudiandae
-         quas vel nulla corrupti dicta eaque, soluta fuga excepturi!</P>
-    <h2>connected!!!!!!!!!!!!!!</h2>
+
+    <!-- Navigation bar -->
+    <nav>
+        <div class="logo">NOVA.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main hero section -->
+    <section class="hero" id="home">
+        <div class="tag">✦ YOUR NEXT DIGITAL JOURNEY STARTS HERE</div>
+
+        <h1>
+            Turn your ideas into
+            <span class="gradient-text">something extraordinary.</span>
+        </h1>
+
+        <p>
+            We believe great ideas deserve great design.
+            Explore a world where creativity meets technology
+            and possibilities become reality.
+        </p>
+
+        <div class="buttons">
+            <a href="#services" class="btn btn-primary">
+                Explore Services →
+            </a>
+
+            <a href="#about" class="btn btn-secondary">
+                Discover Our Story
+            </a>
+        </div>
+    </section>
+
+    <!-- Services section -->
+    <section class="features" id="services">
+
+        <div class="section-heading">
+            <h2>What We <span class="gradient-text">Do</span></h2>
+            <p>Creative solutions for a digital world.</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">✧</div>
+                <h3>Web Design</h3>
+                <p>
+                    Beautiful, responsive websites that look great
+                    on mobile phones, tablets, and computers.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">⌘</div>
+                <h3>Development</h3>
+                <p>
+                    Turn ideas into functional digital experiences
+                    using modern web technologies.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">↗</div>
+                <h3>Digital Growth</h3>
+                <p>
+                    Build your online presence with thoughtful
+                    strategies, creativity, and innovation.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About section -->
+    <section class="about" id="about">
+        <h2>Built on <span class="gradient-text">Creativity</span></h2>
+
+        <p>
+            NOVA is a concept digital studio created around one simple
+            belief: technology should make ideas more powerful.
+            We combine thoughtful design, useful functionality,
+            and a passion for learning to create better experiences.
+        </p>
+    </section>
+
+    <!-- Contact section -->
+    <section class="contact" id="contact">
+        <h2>Have an idea?</h2>
+
+        <p>
+            Every great project begins with a single step.
+            Let's make your next idea happen.
+        </p>
+
+        <button class="btn btn-primary" id="contactBtn">
+            Let's Connect →
+        </button>
+
+        <p id="message" aria-live="polite" style="margin-top: 20px;"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© <span id="year"></span> NOVA Studio. Created with HTML, CSS & JavaScript.</p>
+    </footer>
+
+    <script>
+        // Display the current year automatically
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Make the contact button interactive
+        document.getElementById("contactBtn").addEventListener("click", function () {
+            document.getElementById("message").textContent =
+                "Thanks for your interest! You can add your contact details here.";
+        });
+    </script>
+
 </body>
 </html>
+
